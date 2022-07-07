@@ -41,8 +41,19 @@
               </svg>
               <span class="sr-only">Fermer le menu</span>
             </button>
+            {%- if titles_size > 0 -%}
             <nav role="navigation" aria-label="Menu principal">
               <ul class="navbar-nav nav-lvl--1">
+
+                {%- for path in page_paths -%}
+                {%- assign my_page = site.pages | where: "path", path | first -%}
+                {%- if my_page.title -%}
+                <li class="nav-item is-active common-nav-item">
+                  <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} <span class="sr-only">(page courante)</span></a>
+                </li>
+                {%- endif -%}
+                {%- endfor -%}
+
                 <li class="nav-item common-nav-item">
                   <a class="nav-link" href="#">Label menu 1</a>
                 </li>
@@ -140,6 +151,7 @@
                 </li>
               </ul>
             </nav>
+            {%- endif -%}
             <ul class="nav-right">
               <li class="nav-right-item collapse-wrapper common-nav-item">
                 <button type="button" class="btn btn--icon-only btn-icon--header" aria-label="Accessibilité"
