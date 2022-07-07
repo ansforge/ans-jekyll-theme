@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+---
+layout: default
+---
+<main class="page-content" aria-label="Content">
+  <div class="wrapper container-fluid">
 
-  {%- include head.html -%}
+    {%- if page.title -%}
+      <h1 class="page-heading">{{ page.title }}</h1>
+    {%- endif -%}
 
-  <body>
-
-    {%- include header.html -%}
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper container-fluid">
-
-        {%- if page.title -%}
-          <h1 class="page-heading">{{ page.title }}</h1>
-        {%- endif -%}
-
-        {{ content }}
-      </div>
-    </main>
-
-    {%- include footer.html -%}
-    {%- include scripts.html -%}
-
-  </body>
-
-</html>
+    {{ content }}
+  </div>
+</main>
