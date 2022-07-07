@@ -43,22 +43,14 @@
 
 
 
-                <ul>
-                  {% for item in site.menus.header %}
-                    <li class="menu-item-{{ loop.index }}">
-                      <a href="{{ item.url }}" title="Go to {{ item.title }}">{{ item.title }}</a>
-                      {% if item.children %}
-                        <ul class="sub-menu">
-                        {% for item in item.children %}
-                          <li class="menu-item-{{ loop.index }}">
-                            <a href="{{ item.url }}" title="Go to {{ item.title }}">{{ item.title }}</a>
-                          </li>
-                        {% endfor %}
-                        </ul>
-                      {% endif %}
-                    </li>
-                  {% endfor %}
+                {% for item in site.data.menu.toc %}
+                <h3>{{ item.title }}</h3>
+                  <ul>
+                    {% for entry in item.subfolderitems %}
+                      <li><a href="{{ entry.url }}">{{ entry.page }}</a></li>
+                    {% endfor %}
                   </ul>
+              {% endfor %}
 
 
 
