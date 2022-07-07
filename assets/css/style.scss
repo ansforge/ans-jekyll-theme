@@ -2,6 +2,9 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
+@import
+  "minima/skins/{{ site.minima.skin | default: 'classic' }}",
+  "minima/initialize";
 
 @import 'https://use.typekit.net/jjx2ksb.css';
 @import './ans/style/style-ans.css' ;
