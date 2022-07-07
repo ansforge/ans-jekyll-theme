@@ -42,27 +42,24 @@
               <ul class="navbar-nav nav-lvl--1">
 
 
-<!-- 1st level -->
-{% for nav in site.data.menu %}
-  {% if nav.sub != null %}
-    <li>
-      <ul>
-        <!-- 2nd level -->
-        {% for sub in nav.sub %}
-        <li>
-          <a href="{{ site.baseurl }}{{ sub.href }}">
-            {{ sub.title }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </li>
-  {% else %}
-    <li>
-      <a href="{{ site.baseurl }}{{ nav.href }}">{{ nav.title }}</a>
-    </li>
-  {% endif %}
-{% endfor %}
+
+                <ul>
+                  {% for item in site.menus.header %}
+                    <li class="menu-item-{{ loop.index }}">
+                      <a href="{{ item.url }}" title="Go to {{ item.title }}">{{ item.title }}</a>
+                      {% if item.children %}
+                        <ul class="sub-menu">
+                        {% for item in item.children %}
+                          <li class="menu-item-{{ loop.index }}">
+                            <a href="{{ item.url }}" title="Go to {{ item.title }}">{{ item.title }}</a>
+                          </li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                  </ul>
+
 
 
 
